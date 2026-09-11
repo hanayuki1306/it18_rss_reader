@@ -16,7 +16,7 @@ public class DetailActivity extends AppCompatActivity {
     WebView webView;
     Button btnShare, btnSave, btnBack;
     DatabaseHelper dbHelper;
-    String articleLink, articleTitle;
+    String articleLink, articleTitle, articleImage, articleDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,18 +30,22 @@ public class DetailActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this);
 
-        // Lấy dữ liệu Intent từ MainActivity truyền sang[cite: 5]
+        // Nhận đầy đủ thông tin bài viết truyền sang
         articleLink = getIntent().getStringExtra("ARTICLE_LINK");
         articleTitle = getIntent().getStringExtra("ARTICLE_TITLE");
+        articleImage = getIntent().getStringExtra("ARTICLE_IMAGE");
+        articleDate = getIntent().getStringExtra("ARTICLE_DATE");
 
         // Cấu hình WebView hiển thị báo
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl(articleLink);
+        if (articleLink != null) {
+            webView.loadUrl(articleLink);
+        }
 
         // Nút Quay lại
         btnBack.setOnClickListener(v -> finish());
 
-        // Nút Chia sẻ dùng Implicit Intent[cite: 5]
+        // Nút Chia sẻ dùng Implicit Intent
         btnShare.setOnClickListener(v -> {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
@@ -50,10 +54,10 @@ public class DetailActivity extends AppCompatActivity {
             startActivity(Intent.createChooser(shareIntent, "Chia sẻ bài viết qua..."));
         });
 
-        // Nút Lưu tin dùng SQLite[cite: 8]
+        // Nút Lưu tin dùng SQLite
         btnSave.setOnClickListener(v -> {
-            boolean isSaved = dbHelper.saveNews(articleTitle, articleLink);
-            if(isSaved) {
+            boolean isSaved = dbHelper.saveNews(articleTitle, articleLink, articleImage, articleDate);
+            if (isSaved) {
                 Toast.makeText(this, "Đã lưu thành công!", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Lỗi khi lưu!", Toast.LENGTH_SHORT).show();

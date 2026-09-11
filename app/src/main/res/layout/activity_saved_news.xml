@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
 
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tin Tức Đã Lưu"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:padding="16dp"
-        android:background="#EEEEEE"
-        android:gravity="center"/>
+        android:background="#7CB342"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarSaved"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Tin tức đã lưu"
+            app:titleTextColor="@android:color/white"
+            app:navigationIcon="?attr/homeAsUpIndicator" />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ListView
         android:id="@+id/listViewSaved"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="#E0E0E0"
-        android:dividerHeight="1dp"/>
+        android:dividerHeight="1dp" />
 
 </LinearLayout>

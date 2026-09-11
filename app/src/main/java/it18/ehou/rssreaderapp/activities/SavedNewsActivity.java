@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.List;
 
@@ -24,10 +25,15 @@ public class SavedNewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_news);
 
+        // Khởi tạo Toolbar và kích hoạt nút quay lại
+        Toolbar toolbar = findViewById(R.id.toolbarSaved);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(v -> finish());
+
         listViewSaved = findViewById(R.id.listViewSaved);
         dbHelper = new DatabaseHelper(this);
 
-        // Lấy danh sách tin từ SQLite[cite: 8]
+        // Lấy danh sách tin từ SQLite
         savedList = dbHelper.getAllSavedNews();
 
         // Sử dụng lại NewsAdapter để hiển thị danh sách
@@ -38,11 +44,21 @@ public class SavedNewsActivity extends AppCompatActivity {
         listViewSaved.setOnItemClickListener((parent, view, position, id) -> {
             NewsItem item = savedList.get(position);
 
-            // Chuyển sang màn hình DetailActivity giống hệt như khi đọc tin mới[cite: 5]
             Intent intent = new Intent(SavedNewsActivity.this, DetailActivity.class);
             intent.putExtra("ARTICLE_LINK", item.link);
             intent.putExtra("ARTICLE_TITLE", item.title);
             startActivity(intent);
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Cập nhật lại danh sách nếu người dùng hủy lưu tin từ màn hình chi tiết rồi quay lại
+        if (dbHelper != null && adapter != null) {
+            savedList.clear();
+            savedList.addAll(dbHelper.getAllSavedNews());
+            adapter.notifyDataSetChanged();
+        }
     }
 }
