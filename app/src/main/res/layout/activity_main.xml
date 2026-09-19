@@ -9,28 +9,28 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#7CB342"
+        android:background="@color/primary_green"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="Đọc báo RSS"
+            app:title="@string/toolbar_title"
             app:titleTextColor="@android:color/white" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
+            android:background="@color/white"
             app:tabMode="scrollable"
-            app:tabIndicatorColor="#7CB342"
+            app:tabIndicatorColor="@color/primary_green"
             app:tabIndicatorHeight="3dp"
             app:tabIndicatorFullWidth="false"
-            app:tabTextColor="#757575"
-            app:tabSelectedTextColor="#7CB342"
-            app:tabRippleColor="#E8F5E9" />
+            app:tabTextColor="@color/text_secondary"
+            app:tabSelectedTextColor="@color/primary_green"
+            app:tabRippleColor="@color/primary_green_ripple" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager2.widget.ViewPager2

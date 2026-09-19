@@ -2,4 +2,23 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Màu chủ đạo ứng dụng -->
+    <color name="primary_green">#7CB342</color>
+    <color name="primary_green_dark">#558B2F</color>
+    <color name="primary_green_light">#DCEDC8</color>
+    <color name="primary_green_ripple">#E8F5E9</color>
+
+    <!-- Màu trạng thái & nút chức năng -->
+    <color name="color_saved">#E53935</color>
+    <color name="color_share">#1E88E5</color>
+    <color name="color_back">#546E7A</color>
+
+    <!-- Màu chữ & viền phân cách -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="divider_color">#E0E0E0</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="screen_background">#F5F5F5</color>
+    <color name="image_placeholder">#EEEEEE</color>
 </resources>

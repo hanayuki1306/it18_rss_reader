@@ -31,24 +31,26 @@ public class MainActivity extends AppCompatActivity {
         CategoryPagerAdapter pagerAdapter = new CategoryPagerAdapter(this);
         viewPager.setAdapter(pagerAdapter);
 
-        // 3. Tiêu đề các Tab (Phải khớp thứ tự với mảng link RSS trong Adapter)
-        String[] categoryTitles = {"Giáo dục", "Thể thao", "Giải trí", "Du lịch", "Sức khỏe"};
+        // 3. Tiêu đề các Tab từ string resources
+        int[] categoryTitleRes = {
+                R.string.category_education,
+                R.string.category_sports,
+                R.string.category_entertainment,
+                R.string.category_travel,
+                R.string.category_health
+        };
 
         // 4. Kết nối Tab và ViewPager
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
-            tab.setText(categoryTitles[position]);
+            if (position >= 0 && position < categoryTitleRes.length) {
+                tab.setText(getString(categoryTitleRes[position]));
+            }
         }).attach();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
-
-        // Ẩn nút "Thêm RSS" đi vì bây giờ ta đã có thanh danh mục cố định
-        MenuItem addRssItem = menu.findItem(R.id.menu_add_rss);
-        if (addRssItem != null) {
-            addRssItem.setVisible(false);
-        }
         return true;
     }
 

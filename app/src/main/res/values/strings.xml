@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">RssReaderApp</string>
+    <string name="toolbar_title">Đọc báo RSS</string>
+    <string name="saved_news_title">Tin tức đã lưu</string>
+
+    <!-- Tab categories -->
+    <string name="category_education">Giáo dục</string>
+    <string name="category_sports">Thể thao</string>
+    <string name="category_entertainment">Giải trí</string>
+    <string name="category_travel">Du lịch</string>
+    <string name="category_health">Sức khỏe</string>
+
+    <!-- Detail Activity Buttons -->
+    <string name="btn_back">Quay lại</string>
+    <string name="btn_save">Lưu tin</string>
+    <string name="btn_unsave">Bỏ lưu</string>
+    <string name="btn_share">Chia sẻ</string>
+    <string name="share_title">Chia sẻ bài viết qua...</string>
+
+    <!-- Messages / Toast -->
+    <string name="msg_saved_success">Đã lưu bài viết thành công!</string>
+    <string name="msg_unsaved_success">Đã bỏ lưu bài viết!</string>
+    <string name="msg_save_error">Lỗi khi lưu bài viết!</string>
+    <string name="msg_deleted_success">Đã xóa bài viết khỏi mục đã lưu!</string>
+    <string name="msg_load_error">Không thể tải tin tức. Vui lòng kiểm tra kết nối mạng!</string>
+    <string name="msg_empty_saved">Chưa có bài viết nào được lưu.\nHãy nhấn "Lưu tin" khi đọc bài để xem lại tại đây.</string>
+    <string name="msg_confirm_delete">Bạn có chắc muốn xóa bài viết này khỏi danh sách đã lưu?</string>
+    <string name="dialog_cancel">Hủy</string>
+    <string name="dialog_delete">Xóa</string>
 </resources>
